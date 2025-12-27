@@ -81,7 +81,7 @@ public class Ouranos {
     @SneakyThrows
     private Ouranos() {
         ouranos = this;
-        if (!FileUtil.exist(SERVER_CONFIG_FILE.toFile()) || SERVER_CONFIG_FILE.toFile().getTotalSpace() == 0) {
+        if (!FileUtil.exist(SERVER_CONFIG_FILE.toFile()) || SERVER_CONFIG_FILE.toFile().length() == 0) {
             Files.writeString(SERVER_CONFIG_FILE, new GsonBuilder().setPrettyPrinting().create().toJson(new ServerConfig()));
         }
         this.config = new Gson().fromJson(new FileReader(SERVER_CONFIG_FILE.toFile()), TypeToken.get(ServerConfig.class));
