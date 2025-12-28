@@ -1,0 +1,11 @@
+{
+  // it's not complete now this is for example
+  "DeviceModel": { "type": "string", "default": "" },
+  "DeviceOS": { "type": "int", "default": 0 },
+  "GameVersion": { "type": "string", "default": "" },
+  "GuiScale": { "type": "int", "default": 0 },
+  "MemoryTier": { "type": "int", "default": 0 }, 
+  "ClientRandomId": { "type": "long", "default": "" },
+  "CurrentInputMode": { "type": "int", "default": 0 },
+  "DefaultInputMode": { "type": "int", "default": 0 }
+}
