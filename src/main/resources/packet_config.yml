@@ -1,0 +1,32 @@
+# Packet Configuration
+# Set to false to disable sending specific client data fields to the upstream server.
+# This allows you to filter out potentially problematic or unwanted data.
+
+TrustedSkin: true
+CompatibleWithClientSideChunkGen: true
+OverrideSkin: true
+MaxViewDistance: true
+MemoryTier: true
+PlatformType: true
+GraphicsMode: true
+IsEditorMode: true
+SkinGeometryDataEngineVersion: true
+ArmSize: true
+CapeId: true
+CapeImageHeight: true
+CapeImageWidth: true
+CapeOnClassicSkin: true
+PersonaPieces: true
+PieceTintColors: true
+PersonaSkin: true
+SkinAnimationData: true
+SkinColor: true
+SkinGeometryData: true
+SkinResourcePatch: true
+SkinImageHeight: true
+SkinImageWidth: true
+ThirdPartyNameOnly: true
+AnimatedImageData: true
+PlayFabId: true
+OuranosXUID: true
+OuranosIP: true
