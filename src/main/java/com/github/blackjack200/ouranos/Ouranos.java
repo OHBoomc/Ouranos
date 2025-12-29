@@ -93,6 +93,8 @@ public class Ouranos {
 
         this.bossGroup = new MultiThreadIoEventLoopGroup(NioIoHandler.newFactory());
         this.workerGroup = new MultiThreadIoEventLoopGroup(NioIoHandler.newFactory());
+
+        PacketConfig.init();
     }
 
     @SneakyThrows
@@ -255,6 +257,11 @@ public class Ouranos {
 
                     log.info("Total memory: {} MB", Math.round((runtime.totalMemory() / 1024d / 1024d)));
                     log.info("Memory used: {} MB", Math.round((usedMemory / 1024d / 1024d)));
+                    break;
+                }
+                case "reload": {
+                    PacketConfig.load();
+                    log.info("Packet configuration reloaded.");
                     break;
                 }
                 default:
