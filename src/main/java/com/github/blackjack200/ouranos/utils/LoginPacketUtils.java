@@ -2,6 +2,7 @@ package com.github.blackjack200.ouranos.utils;
 
 
 import com.github.blackjack200.ouranos.Ouranos;
+import com.github.blackjack200.ouranos.PacketConfig;
 import com.github.blackjack200.ouranos.network.session.AuthData;
 import com.github.blackjack200.ouranos.network.session.OuranosProxySession;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -149,11 +150,22 @@ public class LoginPacketUtils {
         //TODO AnimatedImageData rewrite
         clientData.put("AnimatedImageData", List.of());
         clientData.putIfAbsent("PlayFabId", "");
+        
+        // Remove keys disabled in packet_config.yml
+        for (Map.Entry<String, Boolean> entry : PacketConfig.getPacketSettings().entrySet()) {
+            if (!entry.getValue()) {
+                clientData.remove(entry.getKey());
+            }
+        }
 
 
         if (login_extra) {
-            clientData.put("OuranosXUID", identityData.xuid());
-            clientData.put("OuranosIP", ((InetSocketAddress) player.downstream.getSocketAddress()).getHostString());
+            if (PacketConfig.isEnabled("OuranosXUID")) {
+                clientData.put("OuranosXUID", identityData.xuid());
+            }
+            if (PacketConfig.isEnabled("OuranosIP")) {
+                clientData.put("OuranosIP", ((InetSocketAddress) player.downstream.getSocketAddress()).getHostString());
+            }
         }
         jws.setPayload(clientData.toJSONString());
         jws.setKey(pair.getPrivate());
